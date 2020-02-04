@@ -1,10 +1,58 @@
 ---
-title: "Monografia"
-author: "Alysson Oliveira"
-date: "04/02/2020"
-documentclass: abntex2
+title: "IMPACTO DO PRONAF B NA TAXA DE CRESCIMENTO DOS MUNICÍPIOS CEARENSES"
+date: "Fevereiro de 2020"
+author: "Alysson Inácio de Oliveira"
+place: "Fortaleza"
+institution: "Universidade de Fortaleza - UNIFOR"
+orientador: "Prof. Nicolino Trompieri Neto"
+
+
+preamble: Monografia apresentada ao Curso de Graduação em Ciências Econômicas da Universidade de Fortaleza - UNIFOR, como requisito parcial à obtenção do título de Graduação em Ciências Econômicas.
+
+abstract: Inserir resumo
+tags: economia, avaliação de impactos
+
+
 output:
   pdf_document:
+    includes:
+      in_header: preamble.tex
     keep_tex: true
     template: abntex2_template.tex
+    
+
+documentclass: abntex2
+fontsize: 12pt
+papersize: a4paper
+filter: pandoc-citeproc
+lang: english, french, spanish, german, brazil
+classoption: twoside, openright
+linkcolor: blue
+capa: true
+folhaderosto: true
+tipotrabalho: Trabalho de Conclusão de Curso (Graduação)
 ---
+
+
+# Introdução
+
+## Subseção
+
+### Subsubsection
+
+\postextual
+
+# Referências
+
+
+
+
+
+
+
+
+
+
+
+
+

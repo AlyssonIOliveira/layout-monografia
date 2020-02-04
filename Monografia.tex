@@ -66,7 +66,7 @@
 % ou algo semelhante no final do seu markdown. Para citar use as metadatas
 % bibliography e csl como descrito na documentação do pandoc.
 %
-\documentclass[]{abntex2}	% Opções da classe do documento:
+\documentclass[12pt,english, french, spanish, german, brazil,a4paper,twoside, openright]{abntex2}	% Opções da classe do documento:
 			% 	fontsize,lang,papersize,classoption
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}	% Latin Modern
@@ -75,11 +75,22 @@
 \usepackage{fixltx2e} % provides \textsubscript
 \usepackage{indentfirst}	% Indenta o primeiro parágrafo
 \usepackage{color}	% Controle de cores
+
+
 \definecolor{blue}{RGB}{41,5,195}	% Altera o aspecto do azul
+
+
 % use upquote if available, for straight quotes in verbatim environments
+
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  
   \usepackage[utf8]{inputenc}	% Adição de inputenc
+
+
+
+
+
 \else % if luatex or xelatex
   \ifxetex
     \usepackage{mathspec}
@@ -89,32 +100,124 @@
   \fi
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \newcommand{\euro}{€}
+
+
+
+
+
+
+
+
+
+
 \fi
+
+
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+
+
+% Margens do documento estilo ABNT
+
+
+
+
+
+
+% Bibliografia
+
 \hypersetup{breaklinks=true,
             bookmarks=true,
-            pdfauthor={Alysson Oliveira},
-            pdftitle={Monografia},
+            pdfauthor={Alysson Inácio de Oliveira},
+            pdftitle={IMPACTO DO PRONAF B NA TAXA DE CRESCIMENTO DOS MUNICÍPIOS CEARENSES},
             colorlinks=true,
             citecolor=blue,
             urlcolor=blue,
-            linkcolor=magenta,
+            linkcolor=blue,
             pdfborder={0 0 0}}
 \urlstyle{same}  % don't use monospace font for urls
 \setlength{\parindent}{1.3cm}	% Tamanho dos parágrafos
 \setlength{\parskip}{0.2cm}	% Espaçamento entre parágrafos
 \setcounter{secnumdepth}{0}
+\ifxetex
+  \usepackage{polyglossia}
+  \setmainlanguage{}
+\else
+  \usepackage[]{babel}	% Adiciona a última língua de english, french, spanish, german, brazil
+\fi
 
-\titulo{Monografia}	% Adicionando o título
-\autor{Alysson Oliveira}	% Adicionando autor(es)
-\data{04/02/2020}	% Adicionando a data
+
+
+%---
+% Modificando Seções por Capítulos
+%---
+
+
+\counterwithout{section}{chapter}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+
+\titulo{IMPACTO DO PRONAF B NA TAXA DE CRESCIMENTO DOS MUNICÍPIOS CEARENSES}	% Adicionando o título
+
+\autor{Alysson Inácio de Oliveira}	% Adicionando autor(es)
+
+\data{Fevereiro de 2020}	% Adicionando a data
+
+\local{Fortaleza}	% Adicionando o local
+
+\instituicao{Universidade de Fortaleza - UNIFOR}	% Adicionando a instituição
+
+\tipotrabalho{Trabalho de Conclusão de Curso (Graduação)}	% Adicionando a natureza do trabalho
+
+\preambulo{Monografia apresentada ao Curso de Graduação em Ciências Econômicas da
+Universidade de Fortaleza - UNIFOR, como requisito parcial à obtenção do
+título de Graduação em Ciências Econômicas.}	% Adicionando o preâmbulo
+
+\orientador{Prof.~Nicolino Trompieri Neto} % adicionando orientador
+
+
+
+
+
+
 
 \begin{document}
-\maketitle	% Imprimindo um título, caso não seja usada a capa
+	
+	\selectlanguage{brazil}
+	
+	% Retira espaço extra obsoleto entre as frases.
+	\frenchspacing 
+	
+	
+\imprimircapa	% Imprimindo a capa
+\imprimirfolhaderosto	% Imprimindo a folha de rosto
 
+\begin{resumoumacoluna}
+Inserir resumo	% Adicionando o resumo
+
+\vspace{\onelineskip}
+
+\noindent
+\textbf{Palavras-chaves}: economia, avaliação de impactos.	% Adicionando as palavras-chaves
+\end{resumoumacoluna}
 
 \textual	% Início do texto convertido do arquivo original
-	% No próprio texto é necessário invocar \postextual
+\hypertarget{introduuxe7uxe3o}{%
+\section{Introdução}\label{introduuxe7uxe3o}}
+
+\hypertarget{subseuxe7uxe3o}{%
+\subsection{Subseção}\label{subseuxe7uxe3o}}
+
+\hypertarget{subsubsection}{%
+\subsubsection{Subsubsection}\label{subsubsection}}
+
+\postextual
+
+\hypertarget{referuxeancias}{%
+\section{Referências}\label{referuxeancias}}	% No próprio texto é necessário invocar \postextual
 
 \end{document}

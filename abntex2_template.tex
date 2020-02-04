@@ -75,14 +75,25 @@
 \usepackage{fixltx2e} % provides \textsubscript
 \usepackage{indentfirst}	% Indenta o primeiro parágrafo
 \usepackage{color}	% Controle de cores
+
+
 \definecolor{blue}{RGB}{41,5,195}	% Altera o aspecto do azul
+
+
 % use upquote if available, for straight quotes in verbatim environments
+
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  
   \usepackage[utf8]{inputenc}	% Adição de inputenc
+
 $if(euro)$
   \usepackage{eurosym}
 $endif$
+
+
+
+
 \else % if luatex or xelatex
   \ifxetex
     \usepackage{mathspec}
@@ -92,24 +103,47 @@ $endif$
   \fi
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \newcommand{\euro}{€}
+
+
+
+
 $if(mainfont)$
     \setmainfont{$mainfont$}
 $endif$
+
 $if(sansfont)$
     \setsansfont{$sansfont$}
 $endif$
+
 $if(monofont)$
     \setmonofont[Mapping=tex-ansi]{$monofont$}
 $endif$
+
+
 $if(mathfont)$
     \setmathfont(Digits,Latin,Greek){$mathfont$}
 $endif$
+
+
 \fi
+
+
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+
+
+% Margens do documento estilo ABNT
+
+
+
+
+
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
+
+% Bibliografia
+
 $if(natbib)$
 \usepackage{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
@@ -197,25 +231,52 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+
 $if(title)$
 \titulo{$title$}	% Adicionando o título
 $endif$
+
 \autor{$for(author)$$author$$sep$ \and $endfor$}	% Adicionando autor(es)
+
 \data{$date$}	% Adicionando a data
+
 $if(place)$
 \local{$place$}	% Adicionando o local
 $endif$
+
 $if(institution)$
 \instituicao{$institution$}	% Adicionando a instituição
 $endif$
+
 $if(tipotrabalho)$
 \tipotrabalho{$tipotrabalho$}	% Adicionando a natureza do trabalho
 $endif$
+
 $if(preamble)$
 \preambulo{$preamble$}	% Adicionando o preâmbulo
 $endif$
 
+$if(orientador)$
+\orientador{$orientador$} % adicionando orientador
+$endif$
+
+
+
+
+
+
+
 \begin{document}
+	
+	\selectlanguage{brazil}
+	
+	% Retira espaço extra obsoleto entre as frases.
+	\frenchspacing 
+	
+	
 $if(capa)$
 \imprimircapa	% Imprimindo a capa
 $if(folhaderosto)$
