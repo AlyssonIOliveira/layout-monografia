@@ -1,0 +1,10 @@
+---
+title: "Monografia"
+author: "Alysson Oliveira"
+date: "04/02/2020"
+documentclass: abntex2
+output:
+  pdf_document:
+    keep_tex: true
+    template: abntex2_template.tex
+---
