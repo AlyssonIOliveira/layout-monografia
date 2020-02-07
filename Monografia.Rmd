@@ -1,5 +1,5 @@
 ---
-title: "IMPACTO DO PRONAF B NA TAXA DE CRESCIMENTO DOS MUNICÍPIOS CEARENSES"
+title: "Impacto do Pronaf B na Taxa de Crescimento dos Municípios Cearenses"
 date: "Fevereiro de 2020"
 author: "Alysson Inácio de Oliveira"
 place: "Fortaleza"
@@ -31,6 +31,10 @@ linkcolor: blue
 capa: true
 folhaderosto: true
 tipotrabalho: Trabalho de Conclusão de Curso (Graduação)
+
+# Para letras maiúsculas
+
+MakeUppercase: true
 ---
 
 
@@ -40,7 +44,6 @@ tipotrabalho: Trabalho de Conclusão de Curso (Graduação)
 
 ### Subsubsection
 
-\postextual
 
 # Referências
 

@@ -75,7 +75,7 @@
 \usepackage{fixltx2e} % provides \textsubscript
 \usepackage{indentfirst}	% Indenta o primeiro parágrafo
 \usepackage{color}	% Controle de cores
-
+\usepackage{graphicx}
 
 \definecolor{blue}{RGB}{41,5,195}	% Altera o aspecto do azul
 
@@ -126,10 +126,14 @@
 
 % Bibliografia
 
+
+%
+
+
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={Alysson Inácio de Oliveira},
-            pdftitle={IMPACTO DO PRONAF B NA TAXA DE CRESCIMENTO DOS MUNICÍPIOS CEARENSES},
+            pdftitle={Impacto do Pronaf B na Taxa de Crescimento dos Municípios Cearenses},
             colorlinks=true,
             citecolor=blue,
             urlcolor=blue,
@@ -157,11 +161,14 @@
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 
+
+
+
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
 
-\titulo{IMPACTO DO PRONAF B NA TAXA DE CRESCIMENTO DOS MUNICÍPIOS CEARENSES}	% Adicionando o título
+\titulo{Impacto do Pronaf B na Taxa de Crescimento dos Municípios Cearenses}	% Adicionando o título
 
 \autor{Alysson Inácio de Oliveira}	% Adicionando autor(es)
 
@@ -180,10 +187,84 @@ título de Graduação em Ciências Econômicas.}	% Adicionando o preâmbulo
 \orientador{Prof.~Nicolino Trompieri Neto} % adicionando orientador
 
 
+%---
+% Capa para Monografia feita manualmente
+%---
+
+\renewcommand{\imprimircapa}{
+	\begin{capa}
+		
+		
+		\begin{center}
+			
+			\hspace{-0.5cm}\parbox{1.5cm}{\includegraphics[width=1.72cm, height=1.88cm, keepaspectratio = FALSE]{img/unifor.png}}\\ \vspace{0.13cm}
+			\textbf{FUNDAÇÃO EDSON QUEIROZ\\
+				\MakeUppercase{\imprimirinstituicao}\\
+				Centro de Ciências da Comunicação e Gestão - CCG\\
+				Curso de Ciências Econômicas\\ \vspace{4cm}
+								\MakeUppercase{\imprimirautor}
+				\\ \vspace{4cm}
+								\MakeUppercase{\imprimirtitulo}
+				\\ \vspace{\fill}
+				\imprimirlocal\\ \imprimirdata}
+			
+			
+		\end{center}
+		
+	\end{capa}
+}
+
+
+%---
+% Folha de Rosto
+%---
+
+
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+	\begin{center}
+		
+				\MakeUppercase{\imprimirautor}
+				
+		\vspace*{\fill}\vspace*{\fill}
+		
+		\begin{center}
+						\MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+					\end{center}
+		
+		\vspace*{\fill}
+		\abntex@ifnotempty{\imprimirpreambulo}{%
+			\hspace{.45\textwidth}
+			\begin{minipage}{.5\textwidth}
+				\SingleSpacing
+				\imprimirpreambulo
+			\end{minipage}%
+			\vspace*{\fill}
+		}%
+		
+		{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao
+				\vspace*{\fill}}}\\
+		{\large\imprimirorientadorRotulo~\imprimirorientador\par}
+		
+		%		\abntex@ifnotempty{\imprimircoorientador}{
+		%			{\large\imprimircoorientadorRotulo~\imprimircoorientador}
+		%		}
+		
+		\vspace*{\fill}
+		
+		{\large\imprimirlocal}
+		\par
+		{\imprimirdata}
+		\vspace*{0cm}
+	\end{center}
+}
+\makeatother
 
 
 
-
+%---
+% Iniciando o Documento
+%---
 
 \begin{document}
 	
@@ -194,7 +275,18 @@ título de Graduação em Ciências Econômicas.}	% Adicionando o preâmbulo
 	
 	
 \imprimircapa	% Imprimindo a capa
-\imprimirfolhaderosto	% Imprimindo a folha de rosto
+
+\folhaderostocontent	% Imprimindo a folha de rosto
+
+\newpage
+
+
+
+%---
+% Inserindo sumário no documento
+%---
+
+
 
 \begin{resumoumacoluna}
 Inserir resumo	% Adicionando o resumo
@@ -214,8 +306,6 @@ Inserir resumo	% Adicionando o resumo
 
 \hypertarget{subsubsection}{%
 \subsubsection{Subsubsection}\label{subsubsection}}
-
-\postextual
 
 \hypertarget{referuxeancias}{%
 \section{Referências}\label{referuxeancias}}	% No próprio texto é necessário invocar \postextual

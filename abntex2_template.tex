@@ -75,7 +75,7 @@
 \usepackage{fixltx2e} % provides \textsubscript
 \usepackage{indentfirst}	% Indenta o primeiro parágrafo
 \usepackage{color}	% Controle de cores
-
+\usepackage{graphicx}
 
 \definecolor{blue}{RGB}{41,5,195}	% Altera o aspecto do azul
 
@@ -169,27 +169,31 @@ $endif$
 $if(tables)$
 \usepackage{longtable,booktabs}
 $endif$
-$if(graphics)$
-\usepackage{graphicx}
-% Redefine \includegraphics so that, unless explicit options are
-% given, the image width will not exceed the width of the page.
-% Images get their normal width if they fit onto the page, but
-% are scaled down if they would overflow the margins.
-\makeatletter
-\def\ScaleIfNeeded{%
-  \ifdim\Gin@nat@width>\linewidth
-    \linewidth
-  \else
-    \Gin@nat@width
-  \fi
-}
-\makeatother
-\let\Oldincludegraphics\includegraphics
-{%
- \catcode`\@=11\relax%
- \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}%
-}%
-$endif$
+
+%$if(graphics)$
+%\usepackage{graphicx}
+%% Redefine \includegraphics so that, unless explicit options are
+%% given, the image width will not exceed the width of the page.
+%% Images get their normal width if they fit onto the page, but
+%% are scaled down if they would overflow the margins.
+%%\makeatletter
+%\def\ScaleIfNeeded{%
+%  \ifdim\Gin@nat@width>\linewidth
+%    \linewidth
+%  \else
+%    \Gin@nat@width
+%  \fi
+%}
+%\makeatother
+%\let\Oldincludegraphics\includegraphics
+%{%
+% \catcode`\@=11\relax%
+% \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}%
+%}%
+%$endif$
+
+
+
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={$author-meta$},
@@ -231,6 +235,9 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+
+
+
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
@@ -264,10 +271,98 @@ $if(orientador)$
 $endif$
 
 
+%---
+% Capa para Monografia feita manualmente
+%---
+
+\renewcommand{\imprimircapa}{
+	\begin{capa}
+		
+		
+		\begin{center}
+			
+			\hspace{-0.5cm}\parbox{1.5cm}{\includegraphics[width=1.72cm, height=1.88cm, keepaspectratio = FALSE]{img/unifor.png}}\\ \vspace{0.13cm}
+			\textbf{FUNDAÇÃO EDSON QUEIROZ\\
+				\MakeUppercase{\imprimirinstituicao}\\
+				Centro de Ciências da Comunicação e Gestão - CCG\\
+				Curso de Ciências Econômicas\\ \vspace{4cm}
+				$if(MakeUppercase)$
+				\MakeUppercase{\imprimirautor}
+				$else$
+				\imprimirautor
+				$endif$\\ \vspace{4cm}
+				$if(MakeUppercase)$
+				\MakeUppercase{\imprimirtitulo}
+				$else$
+				\imprimirtitulo
+				$endif$\\ \vspace{\fill}
+				\imprimirlocal\\ \imprimirdata}
+			
+			
+		\end{center}
+		
+	\end{capa}
+}
+
+
+%---
+% Folha de Rosto
+%---
+
+
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+	\begin{center}
+		
+		$if(MakeUppercase)$
+		\MakeUppercase{\imprimirautor}
+		$else$
+		\imprimirautor
+		$endif$
+		
+		\vspace*{\fill}\vspace*{\fill}
+		
+		\begin{center}
+			$if(MakeUppercase)$
+			\MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+			$else$
+			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+			$endif$
+		\end{center}
+		
+		\vspace*{\fill}
+		\abntex@ifnotempty{\imprimirpreambulo}{%
+			\hspace{.45\textwidth}
+			\begin{minipage}{.5\textwidth}
+				\SingleSpacing
+				\imprimirpreambulo
+			\end{minipage}%
+			\vspace*{\fill}
+		}%
+		
+		{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao
+				\vspace*{\fill}}}\\
+		{\large\imprimirorientadorRotulo~\imprimirorientador\par}
+		
+		%		\abntex@ifnotempty{\imprimircoorientador}{
+		%			{\large\imprimircoorientadorRotulo~\imprimircoorientador}
+		%		}
+		
+		\vspace*{\fill}
+		
+		{\large\imprimirlocal}
+		\par
+		{\imprimirdata}
+		\vspace*{0cm}
+	\end{center}
+}
+\makeatother
 
 
 
-
+%---
+% Iniciando o Documento
+%---
 
 \begin{document}
 	
@@ -279,9 +374,13 @@ $endif$
 	
 $if(capa)$
 \imprimircapa	% Imprimindo a capa
+
 $if(folhaderosto)$
-\imprimirfolhaderosto	% Imprimindo a folha de rosto
+\folhaderostocontent	% Imprimindo a folha de rosto
 $endif$
+
+\newpage
+
 $else$
 $if(title)$
 \maketitle	% Imprimindo um título, caso não seja usada a capa
@@ -292,6 +391,11 @@ $for(include-before)$
 $include-before$
 
 $endfor$
+
+%---
+% Inserindo sumário no documento
+%---
+
 $if(toc)$
 {
 \hypersetup{linkcolor=black}
@@ -299,6 +403,8 @@ $if(toc)$
 \noindent\tableofcontents	% Adicionando sumário
 }
 $endif$
+
+
 $if(abstract)$
 \begin{resumoumacoluna}
 $abstract$	% Adicionando o resumo
