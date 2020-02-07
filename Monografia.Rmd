@@ -5,7 +5,7 @@ author: "Alysson Inácio de Oliveira"
 place: "Fortaleza"
 institution: "Universidade de Fortaleza - UNIFOR"
 orientador: "Prof. Nicolino Trompieri Neto"
-
+img_capa: img/unifor.png
 
 preamble: Monografia apresentada ao Curso de Graduação em Ciências Econômicas da Universidade de Fortaleza - UNIFOR, como requisito parcial à obtenção do título de Graduação em Ciências Econômicas.
 
@@ -15,8 +15,6 @@ tags: economia, avaliação de impactos
 
 output:
   pdf_document:
-    includes:
-      in_header: preamble.tex
     keep_tex: true
     template: abntex2_template.tex
     
@@ -25,29 +23,58 @@ documentclass: abntex2
 fontsize: 12pt
 papersize: a4paper
 filter: pandoc-citeproc
-lang: english, french, spanish, german, brazil
+lang: english, french, spanish, brazil
 classoption: twoside, openright
 linkcolor: blue
 capa: true
 folhaderosto: true
 tipotrabalho: Trabalho de Conclusão de Curso (Graduação)
+bibliography: bib/abntex2-modelo-references.bib
+biblio-style: abntex2-alf
+
+toc: yes
+
 
 # Para letras maiúsculas
 
 MakeUppercase: true
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+```
 
 
 # Introdução
+
+```{r, include=FALSE}
+data(iris)
+modelo <- lm(Petal.Width ~ Petal.Length, data = iris)
+
+```
+
+
+Assim, @memoir.
+
+
+
+```{r, results='asis'}
+
+stargazer::stargazer(modelo, 
+                     title = "Exemplo de Modelo de Regressão Linear", 
+                     header = F,
+                     label = "teste")
+
+```
+
 
 ## Subseção
 
 ### Subsubsection
 
+\postextual
+
 
 # Referências
-
-
 
 
 

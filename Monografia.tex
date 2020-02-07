@@ -66,16 +66,18 @@
 % ou algo semelhante no final do seu markdown. Para citar use as metadatas
 % bibliography e csl como descrito na documentação do pandoc.
 %
-\documentclass[12pt,english, french, spanish, german, brazil,a4paper,twoside, openright]{abntex2}	% Opções da classe do documento:
+\documentclass[12pt,english, french, spanish, brazil,a4paper,twoside, openright]{abntex2}	% Opções da classe do documento:
 			% 	fontsize,lang,papersize,classoption
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}	% Latin Modern
+\usepackage{times}	% Latin Modern
 \usepackage{amssymb,amsmath}	% Símbolos matemáticos (Pandoc)
 \usepackage{ifxetex,ifluatex}	% Testes de processadores (Pandoc)
 \usepackage{fixltx2e} % provides \textsubscript
 \usepackage{indentfirst}	% Indenta o primeiro parágrafo
 \usepackage{color}	% Controle de cores
 \usepackage{graphicx}
+
+
 
 \definecolor{blue}{RGB}{41,5,195}	% Altera o aspecto do azul
 
@@ -127,7 +129,11 @@
 % Bibliografia
 
 
-%
+%---
+% Modeificando fução \includegraphics{} para não exceder o tamanho da página
+%---
+
+
 
 
 \hypersetup{breaklinks=true,
@@ -147,19 +153,8 @@
   \usepackage{polyglossia}
   \setmainlanguage{}
 \else
-  \usepackage[]{babel}	% Adiciona a última língua de english, french, spanish, german, brazil
+  \usepackage[]{babel}	% Adiciona a última língua de english, french, spanish, brazil
 \fi
-
-
-
-%---
-% Modificando Seções por Capítulos
-%---
-
-
-\counterwithout{section}{chapter}
-\counterwithout{figure}{chapter}
-\counterwithout{table}{chapter}
 
 
 
@@ -197,7 +192,7 @@ título de Graduação em Ciências Econômicas.}	% Adicionando o preâmbulo
 		
 		\begin{center}
 			
-			\hspace{-0.5cm}\parbox{1.5cm}{\includegraphics[width=1.72cm, height=1.88cm, keepaspectratio = FALSE]{img/unifor.png}}\\ \vspace{0.13cm}
+			\hspace{-0.5cm}{\includegraphics{img/unifor.png}}\\ \vspace{0.13cm}
 			\textbf{FUNDAÇÃO EDSON QUEIROZ\\
 				\MakeUppercase{\imprimirinstituicao}\\
 				Centro de Ciências da Comunicação e Gestão - CCG\\
@@ -282,24 +277,61 @@ título de Graduação em Ciências Econômicas.}	% Adicionando o preâmbulo
 
 
 
+
+\begin{resumoumacoluna}
+	Inserir resumo	% Adicionando o resumo
+	
+		\vspace{\onelineskip}
+	
+	\noindent
+	\textbf{Palavras-chaves}: economia, avaliação de impactos.	% Adicionando as palavras-chaves
+	\end{resumoumacoluna}
+
+
+
 %---
 % Inserindo sumário no documento
 %---
 
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
 
 
-\begin{resumoumacoluna}
-Inserir resumo	% Adicionando o resumo
-
-\vspace{\onelineskip}
-
-\noindent
-\textbf{Palavras-chaves}: economia, avaliação de impactos.	% Adicionando as palavras-chaves
-\end{resumoumacoluna}
 
 \textual	% Início do texto convertido do arquivo original
 \hypertarget{introduuxe7uxe3o}{%
 \section{Introdução}\label{introduuxe7uxe3o}}
+
+Assim, Wilson and Madsen (2010).
+
+\begin{table}[!htbp] \centering 
+  \caption{Exemplo de Modelo de Regressão Linear} 
+  \label{teste} 
+\begin{tabular}{@{\extracolsep{5pt}}lc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-2} 
+\\[-1.8ex] & Petal.Width \\ 
+\hline \\[-1.8ex] 
+ Petal.Length & 0.416$^{***}$ \\ 
+  & (0.010) \\ 
+  & \\ 
+ Constant & $-$0.363$^{***}$ \\ 
+  & (0.040) \\ 
+  & \\ 
+\hline \\[-1.8ex] 
+Observations & 150 \\ 
+R$^{2}$ & 0.927 \\ 
+Adjusted R$^{2}$ & 0.927 \\ 
+Residual Std. Error & 0.206 (df = 148) \\ 
+F Statistic & 1,882.452$^{***}$ (df = 1; 148) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
 
 \hypertarget{subseuxe7uxe3o}{%
 \subsection{Subseção}\label{subseuxe7uxe3o}}
@@ -307,7 +339,20 @@ Inserir resumo	% Adicionando o resumo
 \hypertarget{subsubsection}{%
 \subsubsection{Subsubsection}\label{subsubsection}}
 
+\postextual
+
 \hypertarget{referuxeancias}{%
-\section{Referências}\label{referuxeancias}}	% No próprio texto é necessário invocar \postextual
+\section*{Referências}\label{referuxeancias}}
+\addcontentsline{toc}{section}{Referências}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-memoir}{}%
+Wilson, Peter, and Lars Madsen. 2010. \emph{The Memoir Class for
+Configurable Typesetting - User Guide}. Normandy Park, WA: The Herries
+Press.
+\url{http://mirrors.ctan.org/macros/latex/contrib/memoir/memman.pdf}.	% No próprio texto é necessário invocar \postextual
+
+
+
 
 \end{document}

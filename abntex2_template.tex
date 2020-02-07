@@ -69,13 +69,15 @@
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}	% Opções da classe do documento:
 			% 	fontsize,lang,papersize,classoption
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}	% Latin Modern
+\usepackage{times}	% Latin Modern
 \usepackage{amssymb,amsmath}	% Símbolos matemáticos (Pandoc)
 \usepackage{ifxetex,ifluatex}	% Testes de processadores (Pandoc)
 \usepackage{fixltx2e} % provides \textsubscript
 \usepackage{indentfirst}	% Indenta o primeiro parágrafo
 \usepackage{color}	% Controle de cores
 \usepackage{graphicx}
+
+
 
 \definecolor{blue}{RGB}{41,5,195}	% Altera o aspecto do azul
 
@@ -170,27 +172,31 @@ $if(tables)$
 \usepackage{longtable,booktabs}
 $endif$
 
-%$if(graphics)$
-%\usepackage{graphicx}
-%% Redefine \includegraphics so that, unless explicit options are
-%% given, the image width will not exceed the width of the page.
-%% Images get their normal width if they fit onto the page, but
-%% are scaled down if they would overflow the margins.
-%%\makeatletter
-%\def\ScaleIfNeeded{%
-%  \ifdim\Gin@nat@width>\linewidth
-%    \linewidth
-%  \else
-%    \Gin@nat@width
-%  \fi
-%}
-%\makeatother
-%\let\Oldincludegraphics\includegraphics
-%{%
-% \catcode`\@=11\relax%
-% \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}%
-%}%
-%$endif$
+%---
+% Modeificando fução \includegraphics{} para não exceder o tamanho da página
+%---
+
+$if(graphics)$
+\usepackage{graphicx}
+% Redefine \includegraphics so that, unless explicit options are
+% given, the image width will not exceed the width of the page.
+% Images get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+%\makeatletter
+\def\ScaleIfNeeded{%
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+{%
+ \catcode`\@=11\relax%
+ \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}%
+}%
+$endif$
 
 
 
@@ -281,7 +287,7 @@ $endif$
 		
 		\begin{center}
 			
-			\hspace{-0.5cm}\parbox{1.5cm}{\includegraphics[width=1.72cm, height=1.88cm, keepaspectratio = FALSE]{img/unifor.png}}\\ \vspace{0.13cm}
+			\hspace{-0.5cm}{\includegraphics{$img_capa$}}\\ \vspace{0.13cm}
 			\textbf{FUNDAÇÃO EDSON QUEIROZ\\
 				\MakeUppercase{\imprimirinstituicao}\\
 				Centro de Ciências da Comunicação e Gestão - CCG\\
@@ -392,31 +398,33 @@ $include-before$
 
 $endfor$
 
+
+$if(abstract)$
+\begin{resumoumacoluna}
+	$abstract$	% Adicionando o resumo
+	
+	$if(tags)$
+	\vspace{\onelineskip}
+	
+	\noindent
+	\textbf{$if(tagstitle)$$tagstitle$$else$Palavras-chaves$endif$}: $for(tags)$$tags$$sep$. $endfor$.	% Adicionando as palavras-chaves
+	$endif$
+\end{resumoumacoluna}
+$endif$
+
+
+
 %---
 % Inserindo sumário no documento
 %---
 
 $if(toc)$
-{
-\hypersetup{linkcolor=black}
-\setcounter{tocdepth}{$toc-depth$}
-\noindent\tableofcontents	% Adicionando sumário
-}
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
 $endif$
 
 
-$if(abstract)$
-\begin{resumoumacoluna}
-$abstract$	% Adicionando o resumo
-
-$if(tags)$
-\vspace{\onelineskip}
-
-\noindent
-\textbf{$if(tagstitle)$$tagstitle$$else$Palavras-chaves$endif$}: $for(tags)$$tags$$sep$. $endfor$.	% Adicionando as palavras-chaves
-$endif$
-\end{resumoumacoluna}
-$endif$
 
 \textual	% Início do texto convertido do arquivo original
 $body$	% No próprio texto é necessário invocar \postextual
@@ -434,12 +442,15 @@ $endif$
 
 $endif$
 $endif$
+
+
 $if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
 $endif$
+
 $for(include-after)$
 $include-after$
+
 
 $endfor$
 \end{document}
