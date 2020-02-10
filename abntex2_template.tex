@@ -150,21 +150,26 @@ $if(natbib)$
 \usepackage{natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
+
 $if(biblatex)$
 \usepackage{biblatex}
 $if(biblio-files)$
 \bibliography{$biblio-files$}
 $endif$
 $endif$
+
 $if(listings)$
 \usepackage{listings}
 $endif$
+
 $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
+
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
+
 $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 $endif$
@@ -199,28 +204,58 @@ $if(graphics)$
 $endif$
 
 
+% informações do PDF
+\makeatletter
+\hypersetup{
+	breaklinks=true,
+	bookmarks=true,
+	pdfauthor={$author-meta$},
+	pdftitle={$title-meta$},
+	colorlinks=true,
+	citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+	urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+	linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+	pdfborder={0 0 0}
+}
+\makeatother
 
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={$author-meta$},
-            pdftitle={$title-meta$},
-            colorlinks=true,
-            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
-            pdfborder={0 0 0}}
+% ---
+% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
+% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+% ---
+
+
+
+
+      
 \urlstyle{same}  % don't use monospace font for urls
+
 $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
+
 $if(strikeout)$
 \usepackage[normalem]{ulem}
 % avoid problems with \sout in headers with hyperref:
 \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
+
+%---
+% Formatação dos Parágrafos
+%---
+
+
 \setlength{\parindent}{1.3cm}	% Tamanho dos parágrafos
 \setlength{\parskip}{0.2cm}	% Espaçamento entre parágrafos
+
+
+%---
+
+
 $if(numbersections)$
 \setcounter{secnumdepth}{5}
 $else$
@@ -229,6 +264,7 @@ $endif$
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
+
 $if(lang)$
 \ifxetex
   \usepackage{polyglossia}
@@ -237,6 +273,7 @@ $if(lang)$
   \usepackage[$mainlang$]{babel}	% Adiciona a última língua de $lang$
 \fi
 $endif$
+
 $for(header-includes)$
 $header-includes$
 $endfor$
@@ -329,11 +366,9 @@ $endif$
 		\vspace*{\fill}\vspace*{\fill}
 		
 		\begin{center}
-			$if(MakeUppercase)$
-			\MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
-			$else$
+
 			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-			$endif$
+			
 		\end{center}
 		
 		\vspace*{\fill}
@@ -358,7 +393,7 @@ $endif$
 		
 		{\large\imprimirlocal}
 		\par
-		{\imprimirdata}
+		{\large\imprimirdata}
 		\vspace*{0cm}
 	\end{center}
 }
@@ -398,16 +433,173 @@ $include-before$
 
 $endfor$
 
+%---
+% Ficha Catalografica
+%---
+
+
+$if(fichacatalografica)$
+
+ \begin{fichacatalografica}
+     \includepdf{local_fichacatalografica}
+ \end{fichacatalografica}
+
+$else$
+
+\begin{fichacatalografica}
+	\sffamily
+	\vspace*{\fill}					% Posição vertical
+	\begin{center}					% Minipage Centralizado
+		\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+				\small
+				\imprimirautor
+				%Sobrenome, Nome do autor
+				
+				\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+				\imprimirlocal, \imprimirdata-
+				
+				\hspace{0.5cm} \thelastpage p. : il. (algumas color.) ; 30 cm.\\
+				
+				\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+				
+				\hspace{0.5cm}
+				\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao, --
+					\imprimirdata.}\\
+				
+				\hspace{0.5cm}
+				1. Palavra-chave1.
+				2. Palavra-chave2.
+				2. Palavra-chave3.
+				I. Orientador.
+				II. Universidade xxx.
+				III. Faculdade de xxx.
+				IV. Título 			
+		\end{minipage}}
+	\end{center}
+\end{fichacatalografica}
+
+$endif$
+
+\newpage
+
+
+%---
+% Folha de Aprovação
+%---
+
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+
+
+$if(folhadeaprovacao)$
+
+ \begin{folhadeaprovacao}
+ \includepdf{$local_folhadeaprovacao$}
+ \end{folhadeaprovacao}
+
+$else$
+\begin{folhadeaprovacao}
+	
+	\begin{center}
+		{\ABNTEXchapterfont\large\imprimirautor}
+		
+		\vspace*{\fill}\vspace*{\fill}
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+		\end{center}
+		\vspace*{\fill}
+		
+		\hspace{.45\textwidth}
+		\begin{minipage}{.5\textwidth}
+			\imprimirpreambulo
+		\end{minipage}%
+		\vspace*{\fill}
+	\end{center}
+	
+\begin{center}
+		\textbf{Data de aprovação:}\\ \_\_\_\_/\_\_\_\_/\_\_\_\_
+\end{center}
+	
+	\assinatura{\textbf{\imprimirorientador} \\ $desc_orientador$} 
+	\assinatura{\textbf{$professor_convidado1$} \\ $desc_prof_convidado1$}
+	\assinatura{\textbf{$professor_convidado2$} \\ $desc_prof_convidado2$}
+	%\assinatura{\textbf{Professor} \\ Convidado 3}
+	%\assinatura{\textbf{Professor} \\ Convidado 4}
+	
+	\begin{center}
+		\vspace*{0.5cm}
+		{\large\imprimirlocal}
+		\par
+		{\large\imprimirdata}
+		\vspace*{\fill}
+	\end{center}
+	
+\end{folhadeaprovacao}
+
+$endif$
+
+
+\newpage
+
+
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+	\vspace*{\fill}
+	\centering
+	\noindent
+	\textit{ Este trabalho é dedicado às crianças adultas que,\\
+		quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+
+\input{$agradecimentos$}
+	
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+	\vspace*{\fill}
+	\begin{flushright}
+		\textit{``Não vos amoldeis às estruturas deste mundo, \\
+			mas transformai-vos pela renovação da mente, \\
+			a fim de distinguir qual é a vontade de Deus: \\
+			o que é bom, o que Lhe é agradável, o que é perfeito.\\
+			(Bíblia Sagrada, Romanos 12, 2)}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+
+
 
 $if(abstract)$
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumoumacoluna}
-	$abstract$	% Adicionando o resumo
+	
+	\input{$abstract$}	% Adicionando o resumo
 	
 	$if(tags)$
 	\vspace{\onelineskip}
 	
 	\noindent
-	\textbf{$if(tagstitle)$$tagstitle$$else$Palavras-chaves$endif$}: $for(tags)$$tags$$sep$. $endfor$.	% Adicionando as palavras-chaves
+	\textbf{$if(tagstitle)$$tagstitle$$else$Palavras-chaves$endif$}: $for(tags)$$tags$$sep$. $endfor$. \\	% Adicionando as palavras-chaves
+	\textbf{$if(tagstitle)$$tagstitle$$else$JEL$endif$}: $for(JEL)$$JEL$$sep$. $endfor$.	% Adicionando as palavras-chaves
+	
+	
 	$endif$
 \end{resumoumacoluna}
 $endif$

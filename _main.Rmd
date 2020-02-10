@@ -13,6 +13,7 @@ desc_prof_convidado2: 'Convidado 2'
 img_capa: img/unifor.png
 
 preamble: Monografia apresentada ao Curso de Graduação em Ciências Econômicas da Universidade de Fortaleza - UNIFOR, como requisito parcial à obtenção do título de Graduação em Ciências Econômicas.
+knit: "bookdown::render_book"
 
 agradecimentos: agradecimentos.tex
 
@@ -101,4 +102,7 @@ knitr::opts_chunk$set(echo = F)
 
 
 
+
+
+<!--chapter:end:Monografia.Rmd-->
 
