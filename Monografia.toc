@@ -7,14 +7,26 @@
 \defcounter {refsection}{0}\relax 
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {0.1}Introdu\IeC {\c c}\IeC {\~a}o}{15}{section.0.1}% 
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {0.2}Referencial Te\IeC {\'o}rico}{15}{section.0.2}% 
+\contentsline {chapter}{\chapternumberline {1}\MakeTextUppercase {Introdu\IeC {\c c}\IeC {\~a}o}}{15}{chapter.1}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {0.3}Metodologia}{15}{section.0.3}% 
+\contentsline {section}{\numberline {1.1}R Markdown}{15}{section.1.1}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {0.4}Resultados}{15}{section.0.4}% 
+\contentsline {section}{\numberline {1.2}Including Plots}{15}{section.1.2}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {0.5}Conclus\IeC {\~a}o}{15}{section.0.5}% 
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {0.6}Referencial}{15}{section.0.6}% 
+\contentsline {chapter}{\chapternumberline {2}\MakeTextUppercase {Referencial Te\IeC {\'o}rico}}{17}{chapter.2}% 
+\defcounter {refsection}{0}\relax 
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase {Metodologia}}{19}{chapter.3}% 
+\defcounter {refsection}{0}\relax 
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase {Resultados}}{21}{chapter.4}% 
+\defcounter {refsection}{0}\relax 
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Conclus\IeC {\~a}o}}{23}{chapter.5}% 

@@ -69,7 +69,7 @@
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}	% Opções da classe do documento:
 			% 	fontsize,lang,papersize,classoption
 \usepackage[T1]{fontenc}
-\usepackage{times}	% Latin Modern
+\usepackage{$family$}	% Latin Modern
 \usepackage{amssymb,amsmath}	% Símbolos matemáticos (Pandoc)
 \usepackage{ifxetex,ifluatex}	% Testes de processadores (Pandoc)
 \usepackage{fixltx2e} % provides \textsubscript
@@ -135,8 +135,6 @@ $endif$
 
 
 % Margens do documento estilo ABNT
-
-
 
 
 
@@ -274,6 +272,8 @@ $if(lang)$
 \fi
 $endif$
 
+
+
 $for(header-includes)$
 $header-includes$
 $endfor$
@@ -401,6 +401,7 @@ $endif$
 
 
 
+
 %---
 % Iniciando o Documento
 %---
@@ -463,17 +464,17 @@ $else$
 				\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
 				
 				\hspace{0.5cm}
-				\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao, --
+				\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,\\ --
 					\imprimirdata.}\\
 				
 				\hspace{0.5cm}
-				1. Palavra-chave1.
-				2. Palavra-chave2.
-				2. Palavra-chave3.
-				I. Orientador.
-				II. Universidade xxx.
-				III. Faculdade de xxx.
-				IV. Título 			
+				1. $key-word1$.
+				2. $key-word2$.
+				3. $key-word2$.
+				I. $orientador$.
+				II. $institution$.
+				III. $centro$.
+				IV. $title$ 			
 		\end{minipage}}
 	\end{center}
 \end{fichacatalografica}
@@ -520,7 +521,7 @@ $else$
 	\end{center}
 	
 \begin{center}
-		\textbf{Data de aprovação:}\\ \_\_\_\_/\_\_\_\_/\_\_\_\_
+	\large \textbf{Data de aprovação:}\\ \_\_\_\_/\_\_\_\_/\_\_\_\_
 \end{center}
 	
 	\assinatura{\textbf{\imprimirorientador} \\ $desc_orientador$} 

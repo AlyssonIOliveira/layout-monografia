@@ -1,21 +1,24 @@
 ---
-title: "Impacto do Pronaf B na Taxa de Crescimento dos Municípios Cearenses"
+title: 'Impacto do Pronaf B na Taxa de Crescimento dos Municípios Cearenses'
 date: "`r format(Sys.Date(), '%B de %Y')`"
 author: "Alysson Inácio de Oliveira"
 place: "Fortaleza"
 institution: "Universidade de Fortaleza - UNIFOR"
+curso: 'Ciências econômicas'
+centro: 'Centro de Ciências da Comunicação e Gestão - CCG'
 orientador: "Prof. Nicolino Trompieri Neto"
 desc_orientador: 'Orientador'
-professor_convidado1: "Professor que foi Convidado" 
+professor_convidado1: "Professor Convidado" 
 desc_prof_convidado1: 'Convidado 1'
 professor_convidado2: 'Professor'
 desc_prof_convidado2: 'Convidado 2'
 img_capa: img/unifor.png
 
-preamble: Monografia apresentada ao Curso de Graduação em Ciências Econômicas da Universidade de Fortaleza - UNIFOR, como requisito parcial à obtenção do título de Graduação em Ciências Econômicas.
+preamble: 'Monografia apresentada ao Curso de Graduação em Ciências Econômicas da Universidade de Fortaleza - UNIFOR, como requisito parcial à obtenção do título de Graduação em Ciências Econômicas.'
 
 agradecimentos: agradecimentos.tex
-
+base-header-level: 1
+base-numbering-level: 1
 
 
 # Resumo e palavras-chave do trabalho
@@ -23,6 +26,9 @@ agradecimentos: agradecimentos.tex
 abstract: resumo.tex
 tags: economia, avaliação de impactos
 JEL: J45, C45, G45
+key-word1: Palavra-chave1
+key-word2: Palavra-chave2
+key-word3: Palavra-chave3
 
 
 # Informações do output
@@ -31,6 +37,7 @@ output:
   pdf_document:
     keep_tex: true
     template: abntex2_template.tex
+    fig_caption: true
     
 
 # Informações do documento
@@ -38,19 +45,18 @@ output:
 documentclass: abntex2
 fontsize: 12pt
 papersize: a4paper
-filter: pandoc-citeproc
 lang: english, french, spanish, brazil
 mainlang: brazil
 classoption: twoside, openright
 linkcolor: blue
 capa: true
 folhaderosto: true
-tipotrabalho: Trabalho de Conclusão de Curso (Graduação)
+tipotrabalho: Monografia (Graduação)
 biblatex: yes
 bibliography: bib/abntex2-modelo-references.bib
 toc: yes
 MakeUppercase: true # para letras maiúsculas
-
+family: lmodern
 
 # Elementos pós-aprovação
 
@@ -79,18 +85,20 @@ knitr::opts_chunk$set(echo = F)
 <!-- Incício do Documento -->
 
 
-# Introdução
+\chapter{Introdução}
+```{r, child='chapter1.Rmd'}
 
-# Referencial Teórico
+```
 
-# Metodologia
 
-# Resultados
 
-# Conclusão
+\chapter{Referencial Teórico}
 
-# Referencial
+\chapter{Metodologia}
 
+\chapter{Resultados}
+
+\chapter{Conclusão}
 
 
 

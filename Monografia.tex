@@ -69,7 +69,7 @@
 \documentclass[12pt,english, french, spanish, brazil,a4paper,twoside, openright]{abntex2}	% Opções da classe do documento:
 			% 	fontsize,lang,papersize,classoption
 \usepackage[T1]{fontenc}
-\usepackage{times}	% Latin Modern
+\usepackage{lmodern}	% Latin Modern
 \usepackage{amssymb,amsmath}	% Símbolos matemáticos (Pandoc)
 \usepackage{ifxetex,ifluatex}	% Testes de processadores (Pandoc)
 \usepackage{fixltx2e} % provides \textsubscript
@@ -120,8 +120,6 @@
 
 
 % Margens do documento estilo ABNT
-
-
 
 
 
@@ -197,6 +195,8 @@
 
 
 
+
+
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
@@ -211,7 +211,7 @@
 
 \instituicao{Universidade de Fortaleza - UNIFOR}	% Adicionando a instituição
 
-\tipotrabalho{Trabalho de Conclusão de Curso (Graduação)}	% Adicionando a natureza do trabalho
+\tipotrabalho{Monografia (Graduação)}	% Adicionando a natureza do trabalho
 
 \preambulo{Monografia apresentada ao Curso de Graduação em Ciências Econômicas da
 Universidade de Fortaleza - UNIFOR, como requisito parcial à obtenção do
@@ -297,6 +297,7 @@ título de Graduação em Ciências Econômicas.}	% Adicionando o preâmbulo
 
 
 
+
 %---
 % Iniciando o Documento
 %---
@@ -340,17 +341,17 @@ título de Graduação em Ciências Econômicas.}	% Adicionando o preâmbulo
 				\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
 				
 				\hspace{0.5cm}
-				\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao, --
+				\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,\\ --
 					\imprimirdata.}\\
 				
 				\hspace{0.5cm}
 				1. Palavra-chave1.
 				2. Palavra-chave2.
-				2. Palavra-chave3.
-				I. Orientador.
-				II. Universidade xxx.
-				III. Faculdade de xxx.
-				IV. Título 			
+				3. Palavra-chave2.
+				I. Prof.~Nicolino Trompieri Neto.
+				II. Universidade de Fortaleza - UNIFOR.
+				III. Centro de Ciências da Comunicação e Gestão - CCG.
+				IV. Impacto do Pronaf B na Taxa de Crescimento dos Municípios Cearenses 			
 		\end{minipage}}
 	\end{center}
 \end{fichacatalografica}
@@ -389,11 +390,11 @@ título de Graduação em Ciências Econômicas.}	% Adicionando o preâmbulo
 	\end{center}
 	
 \begin{center}
-		\textbf{Data de aprovação:}\\ \_\_\_\_/\_\_\_\_/\_\_\_\_
+	\large \textbf{Data de aprovação:}\\ \_\_\_\_/\_\_\_\_/\_\_\_\_
 \end{center}
 	
 	\assinatura{\textbf{\imprimirorientador} \\ Orientador} 
-	\assinatura{\textbf{Professor que foi Convidado} \\ Convidado 1}
+	\assinatura{\textbf{Professor Convidado} \\ Convidado 1}
 	\assinatura{\textbf{Professor} \\ Convidado 2}
 	%\assinatura{\textbf{Professor} \\ Convidado 3}
 	%\assinatura{\textbf{Professor} \\ Convidado 4}
@@ -481,23 +482,49 @@ título de Graduação em Ciências Econômicas.}	% Adicionando o preâmbulo
 
 
 \textual	% Início do texto convertido do arquivo original
-\hypertarget{introduuxe7uxe3o}{%
-\section{Introdução}\label{introduuxe7uxe3o}}
+\chapter{Introdução}
 
-\hypertarget{referencial-teuxf3rico}{%
-\section{Referencial Teórico}\label{referencial-teuxf3rico}}
+Conforme enunciado no Capítulo anterior, a forma pela qual é melhor
+abordar essa maneira é causada por tal fato que reprimiu tal situação.
 
-\hypertarget{metodologia}{%
-\section{Metodologia}\label{metodologia}}
+\hypertarget{r-markdown}{%
+\section{R Markdown}\label{r-markdown}}
 
-\hypertarget{resultados}{%
-\section{Resultados}\label{resultados}}
+This is an R Markdown document. Markdown is a simple formatting syntax
+for authoring HTML, PDF, and MS Word documents. For more details on
+using R Markdown see \url{http://rmarkdown.rstudio.com}.
 
-\hypertarget{conclusuxe3o}{%
-\section{Conclusão}\label{conclusuxe3o}}
+When you click the \textbf{Knit} button a document will be generated
+that includes both content as well as the output of any embedded R code
+chunks within the document. You can embed an R code chunk like this:
 
-\hypertarget{referencial}{%
-\section{Referencial}\label{referencial}}	% No próprio texto é necessário invocar \postextual
+\begin{verbatim}
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+\end{verbatim}
+
+\hypertarget{including-plots}{%
+\section{Including Plots}\label{including-plots}}
+
+You can also embed plots, for example:
+
+\begin{center}\includegraphics{Monografia_files/figure-latex/pressure-1} \end{center}
+
+Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
+chunk to prevent printing of the R code that generated the plot.
+
+\chapter{Referencial Teórico}
+
+\chapter{Metodologia}
+
+\chapter{Resultados}
+
+\chapter{Conclusão}	% No próprio texto é necessário invocar \postextual
 
 
 
