@@ -2,7 +2,7 @@
 output: pdf_document
 ---
 
-Conforme enunciado no Capítulo anterior, a forma pela qual é melhor abordar essa maneira é causada por tal fato que reprimiu tal situação. 
+Conforme enunciado no Capítulo anterior, a forma pela qual é melhor abordar essa maneira é causada por tal fato que reprimiu tal situação. Conforme @Soyster1973a, @Biderman2004, @Capobiango2012, e @DaSilvaMarioni2016. 
 
 # R Markdown
 

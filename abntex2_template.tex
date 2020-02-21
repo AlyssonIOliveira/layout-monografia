@@ -521,7 +521,9 @@ $else$
 	\end{center}
 	
 \begin{center}
-	\large \textbf{Data de aprovação:}\\ \_\_\_\_/\_\_\_\_/\_\_\_\_
+	\large \textbf{Data de aprovação:}\\ 
+
+	\_\_\_\_/\_\_\_\_/\_\_\_\_
 \end{center}
 	
 	\assinatura{\textbf{\imprimirorientador} \\ $desc_orientador$} 
@@ -586,24 +588,50 @@ $endif$
 
 
 
-$if(abstract)$
+$if(resumo)$
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumoumacoluna}
 	
-	\input{$abstract$}	% Adicionando o resumo
+	\input{$resumo$}	% Adicionando o resumo
 	
-	$if(tags)$
+	$if(tags_resumo)$
 	\vspace{\onelineskip}
 	
 	\noindent
-	\textbf{$if(tagstitle)$$tagstitle$$else$Palavras-chaves$endif$}: $for(tags)$$tags$$sep$. $endfor$. \\	% Adicionando as palavras-chaves
+	\textbf{$if(tagstitle)$$tagstitle$$else$Palavras-chaves$endif$}: $for(tags_resumo)$$tags_resumo$$sep$. $endfor$. \\	% Adicionando as palavras-chaves
 	\textbf{$if(tagstitle)$$tagstitle$$else$JEL$endif$}: $for(JEL)$$JEL$$sep$. $endfor$.	% Adicionando as palavras-chaves
 	
 	
 	$endif$
 \end{resumoumacoluna}
 $endif$
+
+
+
+$if(abstract)$
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumoumacoluna}[Abstract]
+	\begin{otherlanguage*}{english}
+		
+	\input{$abstract$}	% Adicionando o resumo
+	
+	$if(tags_abstract)$
+	\vspace{\onelineskip}
+	
+	\noindent
+	\textbf{$if(tagstitle)$$tagstitle$$else$Palavras-chaves$endif$}: $for(tags_abstract)$$tags_abstract$$sep$. $endfor$. \\	% Adicionando as palavras-chaves
+	\textbf{$if(tagstitle)$$tagstitle$$else$JEL$endif$}: $for(JEL)$$JEL$$sep$. $endfor$.	% Adicionando as palavras-chaves
+	
+	
+	\end{otherlanguage*}
+	$endif$
+	
+	
+\end{resumoumacoluna}
+$endif$
+
 
 
 

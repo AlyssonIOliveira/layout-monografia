@@ -23,8 +23,10 @@ base-numbering-level: 1
 
 # Resumo e palavras-chave do trabalho
 
-abstract: resumo.tex
-tags: economia, avaliação de impactos
+resumo: resumo.tex
+tags_resumo: economia, avaliação de impactos
+abstract: abstract.tex
+tags_abstract: economic, avaliação de impactos
 JEL: J45, C45, G45
 key-word1: Palavra-chave1
 key-word2: Palavra-chave2
@@ -53,7 +55,7 @@ capa: true
 folhaderosto: true
 tipotrabalho: Monografia (Graduação)
 biblatex: yes
-bibliography: bib/abntex2-modelo-references.bib
+bibliography: bib/bibliografia.bib
 toc: yes
 MakeUppercase: true # para letras maiúsculas
 family: lmodern
@@ -70,11 +72,9 @@ local_folhadeaprovacao: pos_text/folhadeaprovacao.pdf
 
 <!-- Configuração Geral dos chunks -->
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F)
 ```
-
 
 
 <!-- Análise de Dados -->
@@ -86,10 +86,10 @@ knitr::opts_chunk$set(echo = F)
 
 
 \chapter{Introdução}
+
 ```{r, child='chapter1.Rmd'}
 
 ```
-
 
 
 \chapter{Referencial Teórico}
