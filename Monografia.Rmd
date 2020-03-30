@@ -1,6 +1,6 @@
 ---
 title: 'Impacto do Pronaf B na Taxa de Crescimento dos Municípios Cearenses'
-date: "`r format(Sys.Date(), '%B de %Y')`"
+date: "`r paste(tools::toTitleCase(format(Sys.Date(), '%B')), format(Sys.Date(), 'de %Y'))`"
 author: "Alysson Inácio de Oliveira"
 place: "Fortaleza"
 institution: "Universidade de Fortaleza - UNIFOR"
