@@ -242,6 +242,8 @@ $if(strikeout)$
 \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
 
+
+
 %---
 % Formatação dos Parágrafos
 %---
@@ -398,6 +400,7 @@ $endif$
 	\end{center}
 }
 \makeatother
+
 
 
 
@@ -672,6 +675,18 @@ $endif$
 $for(include-after)$
 $include-after$
 
-
 $endfor$
+
+
+% Incluindo o Capítulo de Referências no Sumário sem a numeração
+
+$if(contents-references)$
+
+\addcontentsline{toc}{chapter}{$references-name$}
+
+$endif$
+
+
+
+
 \end{document}

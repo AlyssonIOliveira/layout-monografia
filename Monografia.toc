@@ -30,3 +30,9 @@
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Conclus\IeC {\~a}o}}{25}{chapter.5}% 
+\defcounter {refsection}{0}\relax 
+\vspace {\cftbeforechapterskip }
+\defcounter {refsection}{0}\relax 
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{REFER\IeC {\^E}NCIAS}{27}{chapter*.9}% 

@@ -6,7 +6,7 @@ place: "Fortaleza"
 institution: "Universidade de Fortaleza - UNIFOR"
 curso: 'Ciências econômicas'
 centro: 'Centro de Ciências da Comunicação e Gestão - CCG'
-orientador: "Prof. Nicolino Trompieri Neto"
+orientador: "Prof. Dr. Nicolino Trompieri Neto"
 desc_orientador: 'Orientador'
 professor_convidado1: "Professor Convidado" 
 desc_prof_convidado1: 'Convidado 1'
@@ -16,16 +16,18 @@ img_capa: img/unifor.png
 
 preamble: 'Monografia apresentada ao Curso de Graduação em Ciências Econômicas da Universidade de Fortaleza - UNIFOR, como requisito parcial à obtenção do título de Graduação em Ciências Econômicas.'
 
-agradecimentos: agradecimentos.tex
+# Agradecimentos
+
+agradecimentos: agradecimentos/agradecimentos.tex
 base-header-level: 1
 base-numbering-level: 1
 
 
 # Resumo e palavras-chave do trabalho
 
-resumo: resumo.tex
+resumo: abstracts/resumo.tex
 tags_resumo: economia, avaliação de impactos
-abstract: abstract.tex
+abstract: abstracts/abstract.tex
 tags_abstract: economic, avaliação de impactos
 JEL: J45, C45, G45
 key-word1: Palavra-chave1
@@ -38,10 +40,9 @@ key-word3: Palavra-chave3
 output:
   pdf_document:
     keep_tex: true
-    template: abntex2_template.tex
+    template: rmarkdown-templates/abntex2_template.tex
     fig_caption: true
     
-
 # Informações do documento
 
 documentclass: abntex2
@@ -55,7 +56,8 @@ capa: true
 folhaderosto: true
 tipotrabalho: Monografia (Graduação)
 biblatex: yes
-bibliography: bib/bibliografia.bib
+bibliography: bib/bibliografia.bib  
+csl: bib/associacao-brasileira-de-normas-tecnicas-ipea.csl
 toc: yes
 MakeUppercase: true # para letras maiúsculas
 family: lmodern
@@ -68,6 +70,10 @@ local_fichacatalografica: pos_text/fichacatalografica.pdf
 folhadeaprovacao: false
 local_folhadeaprovacao: pos_text/folhadeaprovacao.pdf
 
+# Inclui no Sumário o capítulo de referência sem a numeração.
+
+contents-references: yes
+references-name: "REFERÊNCIAS"
 ---
 
 <!-- Configuração Geral dos chunks -->
@@ -77,20 +83,14 @@ knitr::opts_chunk$set(echo = F)
 ```
 
 
-<!-- Análise de Dados -->
-
-
-
-
 <!-- Incício do Documento -->
 
 
 \chapter{Introdução}
 
-```{r, child='chapter1.Rmd'}
+```{r, child='chapters/chapter1.Rmd'}
 
 ```
-
 
 \chapter{Referencial Teórico}
 
@@ -100,9 +100,10 @@ knitr::opts_chunk$set(echo = F)
 
 \chapter{Conclusão}
 
+\postextual
 
-
-
+\chapter*{Referências}
+\setlength{\parindent}{0cm}
 
 
 
